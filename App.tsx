@@ -6,6 +6,7 @@ import { APP_STORE_URL, GOOGLE_PLAY_URL, SCREENSHOTS } from './constants';
 import logo from './src/images/logo.png';
 import appStoreIcon from './src/images/app_store.png';
 import playStoreIcon from './src/images/playstore.svg';
+import './src/index.css';
 
 
 
