@@ -218,19 +218,19 @@ const App: React.FC = () => {
       <div className="fixed top-[-15%] left-[-10%] w-[60%] h-[60%] bg-red-600/5 rounded-full blur-[160px] pointer-events-none z-0"></div>
       <div className="fixed bottom-[-15%] right-[-10%] w-[60%] h-[60%] bg-red-600/5 rounded-full blur-[160px] pointer-events-none z-0"></div>
 
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-black/60 backdrop-blur-3xl py-3 sm:py-4 border-b border-white/10 shadow-2xl' : 'bg-transparent py-6 sm:py-8'}`}>
-        <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">
-          <div className="group cursor-pointer shrink-0 transition-transform hover:scale-105 active:scale-95" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-            <RounderLogoFull className="h-7 sm:h-9 lg:h-11" />
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled ? 'bg-black/60 backdrop-blur-3xl py-3 sm:py-4 border-b border-white/10 shadow-2xl' : 'bg-transparent py-4 sm:py-8'}`}>
+        <div className="container mx-auto px-4 sm:px-6 flex items-center justify-between gap-1 sm:gap-4">
+          <div className="hidden sm:group sm:flex cursor-pointer shrink-0 transition-transform hover:scale-105 active:scale-95" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <RounderLogoFull className="h-9 lg:h-11" />
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-4 lg:gap-8">
+          <div className="flex items-center justify-between sm:justify-end flex-1 sm:flex-none gap-1 sm:gap-4 lg:gap-8">
             <LangSwitcherDropdown />
             <div className="relative shrink-0" ref={downloadDropdownRef}>
               <Button
                 variant="primary"
                 aria-label="Download Menu"
-                className="px-4 sm:px-8 lg:px-10 h-[40px] sm:h-[44px] lg:h-[48px] rounded-full text-[9px] sm:text-[11px] lg:text-xs shadow-[0_10px_30px_rgba(220,38,38,0.4)] min-w-[100px] sm:min-w-[140px] border border-white/20 whitespace-nowrap"
+                className="px-1 sm:px-8 lg:px-10 h-[32px] sm:h-[44px] lg:h-[48px] rounded-full text-[7px] sm:text-[11px] lg:text-xs shadow-[0_10px_30px_rgba(220,38,38,0.4)] sm:min-w-[140px] border border-white/20 whitespace-nowrap"
                 onClick={() => setIsDownloadOpen(!isDownloadOpen)}
               >
                 {t.download}
@@ -240,14 +240,14 @@ const App: React.FC = () => {
 
               {isDownloadOpen && (
                 <div className="absolute right-0 mt-4 w-64 sm:w-72 bg-neutral-900/95 border border-white/10 rounded-[2.5rem] p-3 shadow-[0_40px_80px_rgba(0,0,0,0.9)] backdrop-blur-3xl animate-in fade-in slide-in-from-top-4 duration-300">
-                  <a href={APP_STORE_URL} target="_blank" className="flex items-center gap-4 sm:gap-5 p-4 sm:p-5 hover:bg-red-600 rounded-[2rem] transition-all group mb-1">
+                  <a href={APP_STORE_URL} target="_blank" onClick={() => setIsDownloadOpen(false)} className="flex items-center gap-4 sm:gap-5 p-4 sm:p-5 hover:bg-red-600 rounded-[2rem] transition-all group mb-1">
                     <AppStoreColoredIcon size={24} />
                     <div className="text-left">
                       <p className="text-[10px] uppercase font-black text-gray-500 group-hover:text-white/80 leading-none mb-1">{t.appStore}</p>
                       <p className="text-sm font-black group-hover:text-white uppercase">iOS {t.download}</p>
                     </div>
                   </a>
-                  <a href={GOOGLE_PLAY_URL} target="_blank" className="flex items-center gap-4 sm:gap-5 p-4 sm:p-5 hover:bg-red-600 rounded-[2rem] transition-all group">
+                  <a href={GOOGLE_PLAY_URL} target="_blank" onClick={() => setIsDownloadOpen(false)} className="flex items-center gap-4 sm:gap-5 p-4 sm:p-5 hover:bg-red-600 rounded-[2rem] transition-all group">
                     <GooglePlayColoredIcon size={24} />
                     <div className="text-left">
                       <p className="text-[10px] uppercase font-black text-gray-500 group-hover:text-white/80 leading-none mb-1">{t.googlePlay}</p>
@@ -261,9 +261,12 @@ const App: React.FC = () => {
         </div>
       </nav>
 
-      <header className="relative pt-48 pb-16 lg:pt-64 lg:pb-24 flex items-center justify-center min-h-[70vh]">
+      <header className="relative pt-32 pb-16 lg:pt-48 lg:pb-24 flex items-center justify-center min-h-[60vh]">
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
+            <div className="flex justify-center mb-12 sm:hidden animate-in fade-in slide-in-from-bottom-4 duration-1000">
+              <RounderLogoFull className="h-12" />
+            </div>
             <h1 className="text-5xl sm:text-7xl lg:text-[140px] font-black mb-10 tracking-tighter leading-[0.85] italic uppercase">
               {t.heroTitle}
             </h1>
@@ -293,7 +296,7 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      <section className="py-20 bg-gradient-to-b from-transparent to-[#050505]">
+      <section className="py-10 bg-gradient-to-b from-transparent to-[#050505]">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black italic uppercase tracking-tighter mb-6 leading-none">
@@ -314,18 +317,19 @@ const App: React.FC = () => {
 
           </div>
 
-          <div className="flex justify-center gap-6 mt-8">
-            <button aria-label="Scroll Screenshots Left" onClick={() => scrollScreenshots('left')} className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-all active:scale-90"><ChevronLeft size={24} /></button>
-            <button aria-label="Scroll Screenshots Right" onClick={() => scrollScreenshots('right')} className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-all active:scale-90"><ChevronRight size={24} /></button>
+          <div className="hidden sm:flex justify-center gap-6 mt-4 relative z-10">
+            <button aria-label="Scroll Screenshots Left" onClick={() => scrollScreenshots('left')} className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-all active:scale-90 shadow-lg"><ChevronLeft size={24} /></button>
+            <button aria-label="Scroll Screenshots Right" onClick={() => scrollScreenshots('right')} className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-red-600 flex items-center justify-center hover:bg-red-700 transition-all active:scale-90 shadow-lg"><ChevronRight size={24} /></button>
           </div>
 
         </div>
       </section>
 
-      <section className="py-24 sm:py-32 relative">
+      <section className="py-12 sm:py-16 relative group/testimonials overflow-hidden">
         <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto text-center relative group">
+          <div className="max-w-5xl mx-auto text-center relative">
             <Quote className="text-red-600 mx-auto mb-10 sm:mb-16 opacity-30 animate-pulse w-12 h-12 sm:w-20 sm:h-20" />
+
             <div className="min-h-[300px] flex flex-col justify-center">
               {t.testimonials.map((test, i) => (
                 <div key={i} className={`transition-all duration-1000 ease-in-out ${activeTestimonial === i ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95 absolute inset-0 pointer-events-none'}`}>
@@ -340,11 +344,28 @@ const App: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            <div className="flex justify-center gap-6 mt-12 sm:mt-16 relative z-20">
+              <button
+                onClick={prevTestimonial}
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/5 hover:bg-red-600 border border-white/10 hover:border-red-600 flex items-center justify-center transition-all active:scale-95 text-white active:bg-red-700 shadow-2xl backdrop-blur-md"
+                aria-label="Previous Testimonial"
+              >
+                <ChevronLeft size={24} />
+              </button>
+              <button
+                onClick={nextTestimonial}
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-white/5 hover:bg-red-600 border border-white/10 hover:border-red-600 flex items-center justify-center transition-all active:scale-95 text-white active:bg-red-700 shadow-2xl backdrop-blur-md"
+                aria-label="Next Testimonial"
+              >
+                <ChevronRight size={24} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="py-24 sm:py-32">
+      <section className="py-12 sm:py-16">
         <div className="container mx-auto px-4 lg:px-6">
           <div className="relative rounded-[3rem] sm:rounded-[5rem] bg-gradient-to-br from-red-600 to-red-900 p-10 sm:p-20 lg:p-32 overflow-hidden text-center shadow-[0_0_150px_rgba(220,38,38,0.25)]">
             <div className="relative z-10">
@@ -375,7 +396,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <footer className="py-20 sm:py-24 border-t border-white/5 bg-[#010101]">
+      <footer className="py-10 sm:py-12 border-t border-white/5 bg-[#010101]">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-12 sm:gap-20">
             <div className="flex flex-col items-center md:items-start gap-6">
