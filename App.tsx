@@ -195,7 +195,7 @@ const App: React.FC = () => {
 
 
       {isLangOpen && (
-        <div className="absolute top-full right-0 mt-3 bg-neutral-900 border border-white/10 rounded-2xl py-2 w-32 shadow-[0_20px_40px_rgba(0,0,0,0.8)] backdrop-blur-3xl animate-in fade-in slide-in-from-top-2">
+        <div className="absolute top-full left-0 mt-3 bg-neutral-900 border border-white/10 rounded-2xl py-2 w-32 shadow-[0_20px_40px_rgba(0,0,0,0.8)] backdrop-blur-3xl animate-in fade-in slide-in-from-top-2">
           {(['en', 'ru', 'uk'] as Language[]).map((l) => (
             <button
               key={l}
